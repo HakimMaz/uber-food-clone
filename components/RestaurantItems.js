@@ -32,30 +32,32 @@ export const localRestaurants = [
   },
 ];
 
-export default function RestaurantItem() {
+export default function RestaurantItems() {
   return (
     <>
-      {localRestaurants.map((item, index) => (
+      {localRestaurants.map((restaurant, index) => (
         <TouchableOpacity 
         activeOpacity={1} 
         style={{ marginBottom: 30 }} 
         key={index}
         >
           <View style={{ padding: 15, marginTop: 10, backgroundColor: "#fff" }}>
-            <ImageRestaurant />
-            <RestaurantInfo />
+            <ImageRestaurant  image={restaurant.image_url}/>
+            <RestaurantInfo 
+              name={restaurant.name}
+              rating={restaurant.rating} />
           </View>
         </TouchableOpacity>
       ))}
     </>
   );
 }
-const ImageRestaurant = () => {
+const ImageRestaurant = ({image}) => {
   return (
     <>
       <Image
         source={{
-          uri: "https://static3.depositphotos.com/1003631/209/i/600/depositphotos_2099183-stock-photo-fine-table-setting-in-gourmet.jpg",
+          uri: image,
         }}
         style={{ width: "100%", height: 180 }}
       />
@@ -66,7 +68,7 @@ const ImageRestaurant = () => {
   );
 };
 
-const RestaurantInfo = () => {
+const RestaurantInfo = ({name,rating}) => {
   return (
     <View
       style={{
@@ -78,8 +80,7 @@ const RestaurantInfo = () => {
     >
       <View style={{}}>
         <Text style={{ fontSize: 15, fontWeight: "bold" }}>
-          {" "}
-          dummy restaurant india
+          {name}
         </Text>
         <Text style={{ fontSize: 13, color: "gray", marginLeft: 5 }}>
           30 -45 • min
@@ -95,7 +96,7 @@ const RestaurantInfo = () => {
           justifyContent: "center",
         }}
       >
-        <Text>4</Text>
+        <Text>{rating}</Text>
       </View>
     </View>
   );
