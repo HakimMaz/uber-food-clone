@@ -9,13 +9,15 @@ import axios from 'axios'
 const YELP_API_KEY = "youOcyO1q_sHQ-dUaKYTmy2yDPPjHvZU3BaHAn1ZDt8-PFU20SfQ0U6DyQiBBsb7NHj59x0WHExU_3_f3WTOdzfRuZGH98TjybliFxKebbelHX21ZHBEO6wNhGH6YXYx";
 export default function Home() {
   const [restaurants, setRestaurants] = useState(localRestaurants);
+  const[city,setCity]=useState('San Francesco');
+
   useEffect(() => {
     getRestaurentsFromYelp(); 
-  }, []);
+  }, [city]);
   
   const getRestaurentsFromYelp = () => {
     const yelpUrl =
-      "https://api.yelp.com/v3/businesses/search?term=restaurant&location=Hollywood";
+      `https://api.yelp.com/v3/businesses/search?term=restaurant&location=${city}`;
     const yelpOptions = {
       headers: {
         Authorization: `Bearer ${YELP_API_KEY}`,
@@ -25,15 +27,19 @@ export default function Home() {
          setRestaurants(res.data.businesses)
     });   
   };
+  
+  const handleCity=(city)=>{
+      setCity(city)
+  }
   return (
     <SafeAreaView style={{ backgroundColor: "#eee", height: "100%" }}>
       <View style={{ backgroundColor: "white", padding: 15 }}>
         <HeaderTabs />
-        <SearchBar />
+        <SearchBar CityHandler={handleCity}/>
       </View>
       <ScrollView showsVerticalScrollIndicator={false}>
         <Categories />
-        <RestaurantItems restaurantData={restaurants} />
+        <RestaurantItems restaurantData={restaurants}/>
       </ScrollView>
     </SafeAreaView>
   );
