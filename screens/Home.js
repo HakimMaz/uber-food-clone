@@ -5,12 +5,11 @@ import HeaderTabs from "../components/HeaderTabs";
 import RestaurantItems from "../components/RestaurantItems";
 import SearchBar from "../components/SearchBar";
 import { localRestaurants } from "../components/RestaurantItems";
-
-const YELP_API_KEY = " ";
+import axios from 'axios'
+const YELP_API_KEY = "youOcyO1q_sHQ-dUaKYTmy2yDPPjHvZU3BaHAn1ZDt8-PFU20SfQ0U6DyQiBBsb7NHj59x0WHExU_3_f3WTOdzfRuZGH98TjybliFxKebbelHX21ZHBEO6wNhGH6YXYx";
 export default function Home() {
   const [restaurants, setRestaurants] = useState(localRestaurants);
   useEffect(() => {
-    console.log(" hereeeee");
     getRestaurentsFromYelp(); 
   }, []);
   
@@ -19,15 +18,12 @@ export default function Home() {
       "https://api.yelp.com/v3/businesses/search?term=delis&latitude=37.786882&longitude=-122.399972";
     const yelpOptions = {
       headers: {
-        Authorisation: `Bearer ${YELP_API_KEY}`,
+        Authorization: `Bearer ${YELP_API_KEY}`,
       },
     };
-    return fetch(yelpUrl, yelpOptions)
-      .then((res) => res.json())
-      .then((json) => //
-      //setRestaurants(json.businesses)
-      console.log(" just here")
-      );
+     axios.get(yelpUrl,yelpOptions).then(res=>{
+         setRestaurants(res.data.businesses)
+    });   
   };
   return (
     <SafeAreaView style={{ backgroundColor: "#eee", height: "100%" }}>
