@@ -6,7 +6,8 @@ import RestaurantItems from "../components/RestaurantItems";
 import SearchBar from "../components/SearchBar";
 import { localRestaurants } from "../components/RestaurantItems";
 import axios from 'axios'
-const YELP_API_KEY = "youOcyO1q_sHQ-dUaKYTmy2yDPPjHvZU3BaHAn1ZDt8-PFU20SfQ0U6DyQiBBsb7NHj59x0WHExU_3_f3WTOdzfRuZGH98TjybliFxKebbelHX21ZHBEO6wNhGH6YXYx";
+import {YELP_API_KEY} from '@env'
+
 export default function Home() {
   const [restaurants, setRestaurants] = useState(localRestaurants);
   const[city,setCity]=useState('San Francesco');
