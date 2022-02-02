@@ -15,7 +15,7 @@ export default function Home() {
   
   const getRestaurentsFromYelp = () => {
     const yelpUrl =
-      "https://api.yelp.com/v3/businesses/search?term=delis&latitude=37.786882&longitude=-122.399972";
+      "https://api.yelp.com/v3/businesses/search?term=restaurant&location=Hollywood";
     const yelpOptions = {
       headers: {
         Authorization: `Bearer ${YELP_API_KEY}`,
