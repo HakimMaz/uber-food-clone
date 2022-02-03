@@ -10,13 +10,15 @@ import {YELP_API_KEY} from '@env'
 
 export default function Home() {
   const [restaurants, setRestaurants] = useState(localRestaurants);
-  const[city,setCity]=useState('San Francesco');
+  const[city,setCity]=useState('San Francisco');
+  const[activeTab,setActiveTabe]=useState('Delivery')
 
   useEffect(() => {
     getRestaurentsFromYelp(); 
   }, [city]);
   
   const getRestaurentsFromYelp = () => {
+      console.log({city})
     const yelpUrl =
       `https://api.yelp.com/v3/businesses/search?term=restaurant&location=${city}`;
     const yelpOptions = {
@@ -24,8 +26,11 @@ export default function Home() {
         Authorization: `Bearer ${YELP_API_KEY}`,
       },
     };
-     axios.get(yelpUrl,yelpOptions).then(res=>{
-         setRestaurants(res.data.businesses)
+     axios.get(yelpUrl,yelpOptions).then((res)=>{
+         const restaurants =  res.data.businesses.filter(
+             item=> item.transactions.includes(activeTab.toLowerCase())); 
+         setRestaurants(restaurants);
+                
     });   
   };
   
