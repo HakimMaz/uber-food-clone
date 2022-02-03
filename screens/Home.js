@@ -1,5 +1,5 @@
 import React, { useState,useEffect} from "react";
-import { View, SafeAreaView, ScrollView } from "react-native";
+import { View,  ScrollView } from "react-native";
 import Categories from "../components/Categories";
 import HeaderTabs from "../components/HeaderTabs";
 import RestaurantItems from "../components/RestaurantItems";
@@ -7,6 +7,9 @@ import SearchBar from "../components/SearchBar";
 import { localRestaurants } from "../components/RestaurantItems";
 import axios from 'axios'
 import {YELP_API_KEY} from '@env'
+import { Divider } from "react-native-elements";
+import BottomTabs from "../components/BottomTabs";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 export default function Home() {
   const [restaurants, setRestaurants] = useState(localRestaurants);
@@ -46,6 +49,8 @@ export default function Home() {
         <Categories />
         <RestaurantItems restaurantData={restaurants}/>
       </ScrollView>
+      <Divider width={1} />
+      <BottomTabs/>
     </SafeAreaView>
   );
 }
