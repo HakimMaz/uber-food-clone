@@ -1,6 +1,7 @@
 import { View, Text, Image,ScrollView} from "react-native";
 import React from "react";
 import { CheckBox, Divider } from "react-native-elements";
+import BouncyCheckbox from "react-native-bouncy-checkbox";
 
  const food = [
   {
@@ -28,7 +29,7 @@ import { CheckBox, Divider } from "react-native-elements";
     image_url:
       "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8cmVzdGF1cmFudCUyMGludGVyaW9yfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&w=1000&q=80",
     categories: ["Indian", "Bar"],
-    description:'same description averywhere,you go than so last',
+    description:'same description averywhere,you go than so last ',
     price: "$47",
     reviews: 700,
     rating: 4.9,
@@ -64,7 +65,7 @@ import { CheckBox, Divider } from "react-native-elements";
     rating: 4.5,
   },
 ];
-export default function MenuItems() {
+export default function MenuItems({}) {
   return (
     <ScrollView  showsHorizontalScrollIndicator={false}>
     {food.map((item,index)=>(
@@ -76,7 +77,9 @@ export default function MenuItems() {
           margin:20
         }}
       >
-        {/* <CheckBox/> */}
+        <BouncyCheckbox
+        fillColor="green" 
+        iconStyle={{borderRadius:0,borderColor:'lightgray' }}/>
         <FoodInfo food={item} />
         <FoodImage image={item.image_url} />
       </View>
@@ -93,7 +96,7 @@ const FoodInfo = ({ food }) => (
     <Text style={{ fontSize: 19, fontWeight: "600" }}>
       {food.title}
     </Text>
-    <Text>{food.description}</Text>
+    <Text style={{flexWrap:'wrap'}}>{food.description}</Text>
     <Text>{food.price}</Text>
   </View>
 );
