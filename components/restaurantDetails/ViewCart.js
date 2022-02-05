@@ -31,7 +31,7 @@ export default function ViewCart() {
             padding: 13,
           }}
         >
-          <Text style={{ color: "#fff" ,fontSize:20}}>View Card</Text>
+          <Text style={{ color: "#fff" ,fontSize:20}}>View Cart</Text>
         </TouchableOpacity>
       </View>
     </View>
