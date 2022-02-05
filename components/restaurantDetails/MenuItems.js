@@ -15,6 +15,36 @@ import BouncyCheckbox from "react-native-bouncy-checkbox";
     rating: 4.5,
   },
   {
+    title: "Beachside Bar",
+    image_url:
+      "https://static.onecms.io/wp-content/uploads/sites/9/2020/04/24/ppp-why-wont-anyone-rescue-restaurants-FT-BLOG0420.jpg",
+    categories: ["Cafe", "Bar"],
+    description:'same description averywhere,you go',
+    price: "$16",
+    reviews: 1244,
+    rating: 4.5,
+  },
+  {
+    title: "Beachside Bar",
+    image_url:
+      "https://static.onecms.io/wp-content/uploads/sites/9/2020/04/24/ppp-why-wont-anyone-rescue-restaurants-FT-BLOG0420.jpg",
+    categories: ["Cafe", "Bar"],
+    description:'same description averywhere,you go',
+    price: "$16",
+    reviews: 1244,
+    rating: 4.5,
+  },
+  {
+    title: "Beachside Bar",
+    image_url:
+      "https://static.onecms.io/wp-content/uploads/sites/9/2020/04/24/ppp-why-wont-anyone-rescue-restaurants-FT-BLOG0420.jpg",
+    categories: ["Cafe", "Bar"],
+    description:'same description averywhere,you go',
+    price: "$16",
+    reviews: 1244,
+    rating: 4.5,
+  },
+  {
     title: "Benihana",
     image_url:
       "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8cmVzdGF1cmFudCUyMGludGVyaW9yfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&w=1000&q=80",
@@ -67,27 +97,29 @@ import BouncyCheckbox from "react-native-bouncy-checkbox";
 ];
 export default function MenuItems({}) {
   return (
-    <ScrollView  showsHorizontalScrollIndicator={false}>
-    {food.map((item,index)=>(
-    <View key={index}>
-      <View
-        style={{
-          flexDirection: "row",
-          justifyContent: "space-between",
-          margin:20
-        }}
-      >
-        <BouncyCheckbox
-        fillColor="green" 
-        iconStyle={{borderRadius:0,borderColor:'lightgray' }}/>
-        <FoodInfo food={item} />
-        <FoodImage image={item.image_url} />
-      </View>
-      <Divider widht={0.5} orientation='vertical' style={{marginHorizontal:20}}/>
-    </View>
-    )
-    )}
-    </ScrollView>
+   <ScrollView>
+
+     {food.map((item,index)=>(
+     <View key={index}>
+       <View
+         style={{
+           flexDirection: "row",
+           justifyContent: "space-between",
+           margin:20
+         }}
+       >
+         <BouncyCheckbox
+         fillColor="green" 
+         iconStyle={{borderRadius:0,borderColor:'lightgray' }}/>
+         <FoodInfo food={item} />
+         <FoodImage image={item.image_url} />
+       </View>
+       <Divider widht={0.5} orientation='vertical' style={{marginHorizontal:20}}/>
+     </View>
+     )
+     )}
+   </ScrollView>
+   
   );
 }
 
