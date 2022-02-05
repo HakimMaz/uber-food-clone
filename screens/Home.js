@@ -11,7 +11,7 @@ import {YELP_API_KEY} from '@env'
 import { Divider } from "react-native-elements";
 import { SafeAreaView } from "react-native-safe-area-context";
 
-export default function Home() {
+export default function Home({navigation}) {
   const [restaurants, setRestaurants] = useState(localRestaurants);
   const[city,setCity]=useState('San Francisco');
   const[activeTab,setActiveTab]=useState('Delivery')
@@ -47,7 +47,7 @@ export default function Home() {
       </View>
       <ScrollView showsVerticalScrollIndicator={false}>
         <Categories />
-        <RestaurantItems restaurantData={restaurants}/>
+        <RestaurantItems restaurantData={restaurants} navigation={navigation}/>
       </ScrollView>
       <Divider width={1} />
       <BottomTabs/>

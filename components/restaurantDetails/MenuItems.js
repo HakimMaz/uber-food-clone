@@ -66,7 +66,7 @@ import { CheckBox, Divider } from "react-native-elements";
 ];
 export default function MenuItems() {
   return (
-    <ScrollView showsHorizontalScrollIndicator={false}>
+    <ScrollView  showsHorizontalScrollIndicator={false}>
     {food.map((item,index)=>(
     <View key={index}>
       <View
@@ -80,7 +80,7 @@ export default function MenuItems() {
         <FoodInfo food={item} />
         <FoodImage image={item.image_url} />
       </View>
-      <Divider widht={0.5} orientation='vertical'/>
+      <Divider widht={0.5} orientation='vertical' style={{marginHorizontal:20}}/>
     </View>
     )
     )}

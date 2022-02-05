@@ -32,7 +32,7 @@ export const localRestaurants = [
   },
 ];
 
-export default function RestaurantItems({restaurantData}) {
+export default function RestaurantItems({restaurantData,navigation}) {
   return (
     <>
       {restaurantData.map((restaurant, index) => (
@@ -40,6 +40,7 @@ export default function RestaurantItems({restaurantData}) {
         activeOpacity={1} 
         style={{ marginBottom: 30 }} 
         key={index}
+        onPress={()=>navigation.navigate('RestaurantDetail',{restaurant})}
         >
           <View style={{ padding: 15, marginTop: 10, backgroundColor: "#fff" }}>
             <ImageRestaurant  image={restaurant.image_url}/>
